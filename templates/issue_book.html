@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Issue Book | NovellaHub</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="min-h-screen bg-[#F5EFE5] text-[#34351F]">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="w-64 shrink-0 bg-[#4D512F] p-6 text-[#D6C7B5]">
+        <!-- NovellaHub SVG Logo -->
+        <h2
+          class="text-[#D4B56A] text-2xl font-bold tracking-wide flex items-center gap-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v16" />
+            <path
+              d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"
+            />
+          </svg>
+
+          NovellaHub
+        </h2>
+
+        <p class="mt-2 text-sm">Library Management System</p>
+
+         <!-- Navigation Menu -->
+        <nav class="mt-10 space-y-2">
+          <a
+            href="/"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>🏠</span>
+            <span>Dashboard</span>
+          </a>
+
+          <a
+            href="/books"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>📚</span>
+            <span>View Books</span>
+          </a>
+
+          <a
+            href="/add-book"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>➕</span>
+            <span>Add Book</span>
+          </a>
+
+          <a
+            href="/search"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>🔍</span>
+            <span>Search Book</span>
+          </a>
+
+          <a
+            href="/issue-book"
+            class="flex items-center gap-3 bg-[#D4B56A] text-[#34351F] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>📤</span>
+            <span>Issue Book</span>
+          </a>
+
+          <a
+            href="/return-book"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>📥</span>
+            <span>Return Book</span>
+          </a>
+        </nav>
+      </aside>
+      <!-- Main Content -->
+      <main class="min-w-0 flex-1 p-8">
+        <div
+          class="mb-8 flex items-center justify-between border-b border-[#E5DCCE] pb-4"
+        >
+          <div>
+            <h1 class="text-2xl font-bold">Issue Book</h1>
+            <p class="mt-1 text-sm text-[#827965]">
+              Issue a book to a student from your library collection.
+            </p>
+          </div>
+          <span class="text-2xl">👤</span>
+        </div>
+
+        <div class="mx-auto max-w-2xl">
+          <section
+            class="rounded-xl border border-[#E5DCCE] bg-white p-6 shadow-sm"
+          >
+            <div class="mb-6">
+              <h2 class="text-lg font-bold">Issue Details</h2>
+              <p class="mt-1 text-sm text-[#827965]">
+                Enter the student and book information below.
+              </p>
+            </div>
+            <form
+    id="issueBookForm"
+    action="/issue-book"
+    method="POST"
+    class="space-y-5"
+>
+              <div>
+                <label for="studentName" class="mb-2 block text-sm font-medium"
+                  >Student Name</label
+                >
+                <input
+                  type="text"
+                  id="studentName"
+                  name="studentName"
+                  placeholder="Enter student name"
+                  required
+                  class="w-full rounded-lg border border-[#E5DCCE] bg-[#FDFBF7] px-4 py-3 text-sm outline-none focus:border-[#D4B56A]"
+                />
+              </div>
+              <div>
+                <label for="studentId" class="mb-2 block text-sm font-medium"
+                  >Student ID</label
+                >
+                <input
+                  type="text"
+                  id="studentId"
+                  name="studentId"
+                  placeholder="Enter student ID"
+                  required
+                  class="w-full rounded-lg border border-[#E5DCCE] bg-[#FDFBF7] px-4 py-3 text-sm outline-none focus:border-[#D4B56A]"
+                />
+              </div>
+              <div>
+                <label for="issueBookId" class="mb-2 block text-sm font-medium"
+                  >Book ID</label
+                >
+                <input
+                  type="number"
+                  id="issueBookId"
+                  name="bookId"
+                  min="1"
+                  placeholder="Enter book ID"
+                  required
+                  class="w-full rounded-lg border border-[#E5DCCE] bg-[#FDFBF7] px-4 py-3 text-sm outline-none focus:border-[#D4B56A]"
+                />
+              </div>
+              <div>
+                <label
+                  for="issueQuantity"
+                  class="mb-2 block text-sm font-medium"
+                  >Quantity to Issue</label
+                >
+                <input
+                  type="number"
+                  id="issueQuantity"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                  required
+                  class="w-full rounded-lg border border-[#E5DCCE] bg-[#FDFBF7] px-4 py-3 text-sm outline-none focus:border-[#D4B56A]"
+                />
+              </div>
+              {% if message %}
+<p
+    class="rounded-lg bg-[#F5EFE5] p-3 text-sm text-[#4D512F]"
+    role="status"
+    aria-live="polite"
+>
+    {{ message }}
+</p>
+{% endif %}
+              <div class="flex gap-3 pt-2">
+                <button
+                  type="submit"
+                  class="flex-1 rounded-lg bg-[#4D512F] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#626744]"
+                >
+                  Issue Book
+                </button>
+                <button
+                  type="reset"
+                  class="rounded-lg border border-[#E5DCCE] px-5 py-3 text-sm font-medium hover:bg-[#F5EFE5]"
+                >
+                  Clear
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,238 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Books | NovellaHub</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="min-h-screen bg-[#F5EFE5] text-[#34351F]">
+    <div class="flex min-h-screen">
+
+      <!-- Sidebar -->
+      <aside class="w-64 shrink-0 bg-[#4D512F] p-6 text-[#D6C7B5]">
+        <h2 class="flex items-center gap-2 text-2xl font-bold text-[#D4B56A]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v16" />
+            <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
+          </svg>
+          NovellaHub
+        </h2>
+
+        <p class="mt-2 text-sm">Library Management System</p>
+
+        <!-- Navigation Menu -->
+        <nav class="mt-10 space-y-2">
+          <a
+            href="/"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>🏠</span>
+            <span>Dashboard</span>
+          </a>
+
+          <a
+            href="/books"
+            class="flex items-center gap-3 bg-[#D4B56A] text-[#34351F] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>📚</span>
+            <span>View Books</span>
+          </a>
+
+          <a
+            href="/add-book"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>➕</span>
+            <span>Add Book</span>
+          </a>
+
+          <a
+            href="/search"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>🔍</span>
+            <span>Search Book</span>
+          </a>
+
+          <a
+            href="/issue-book"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>📤</span>
+            <span>Issue Book</span>
+          </a>
+
+          <a
+            href="/return-book"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>📥</span>
+            <span>Return Book</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="min-w-0 flex-1 p-8">
+
+        <!-- Page Heading -->
+        <div class="mb-8 flex items-center justify-between border-b border-[#E5DCCE] pb-4">
+          <div>
+            <h1 class="text-2xl font-bold">View Books</h1>
+            <p class="mt-1 text-sm text-[#827965]">
+              Browse and find books in your library collection.
+            </p>
+          </div>
+
+          <a
+            href="/add-book"
+            class="rounded-lg bg-[#4D512F] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#626744]"
+          >
+            + Add Book
+          </a>
+        </div>
+
+        <!-- Book Catalogue -->
+        <section class="overflow-hidden rounded-xl border border-[#E5DCCE] bg-white">
+
+          <!-- Search and Filter -->
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#E5DCCE] p-5">
+            <div>
+              <h2 class="font-bold">All Books</h2>
+              <p class="mt-1 text-xs text-[#827965]">
+                Browse your complete book collection.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+
+              <!-- Search -->
+              <div class="flex items-center gap-2 rounded-lg border border-[#E5DCCE] bg-[#FDFBF7] px-3 py-2.5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#827965"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+
+                <input
+                  type="text"
+                  id="bookSearch"
+                  placeholder="Search title, author or ID..."
+                  class="w-52 bg-transparent text-xs outline-none"
+                />
+              </div>
+
+              <!-- Availability Filter -->
+              <select
+                id="statusFilter"
+                class="rounded-lg border border-[#E5DCCE] bg-[#FDFBF7] px-3 py-2.5 text-xs outline-none focus:border-[#D4B56A]"
+              >
+                <option value="all">All Status</option>
+                <option value="available">Available</option>
+                <option value="unavailable">Unavailable</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Books Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-[#F5EFE5] text-[#827965]">
+                <tr>
+                  <th class="whitespace-nowrap p-4">Book ID</th>
+                  <th class="whitespace-nowrap p-4">Book Title</th>
+                  <th class="whitespace-nowrap p-4">Author</th>
+                  <th class="whitespace-nowrap p-4">Total Quantity</th>
+                  <th class="whitespace-nowrap p-4">Available</th>
+                  <th class="whitespace-nowrap p-4">Price</th>
+                  <th class="whitespace-nowrap p-4">Status</th>
+                </tr>
+              </thead>
+
+              <tbody id="booksTableBody" class="text-[#34351F]">
+
+                {% for book in books %}
+
+                <tr
+                  class="book-row border-t border-[#F0E9DF]"
+                  data-status="{{ 'available' if book.available_quantity > 0 else 'unavailable' }}"
+                >
+                  <td class="whitespace-nowrap p-4">{{ book.bookId }}</td>
+
+                  <td class="whitespace-nowrap p-4 font-medium">
+                    {{ book.title }}
+                  </td>
+
+                  <td class="whitespace-nowrap p-4">{{ book.author }}</td>
+
+                  <td class="whitespace-nowrap p-4">{{ book.total_quantity }}</td>
+
+                  <td class="whitespace-nowrap p-4">{{ book.available_quantity }}</td>
+
+                  <td class="whitespace-nowrap p-4">
+                    ₹{{ "%.2f"|format(book.price) }}
+                  </td>
+
+                  <td class="whitespace-nowrap p-4">
+                    {% if book.available_quantity > 0 %}
+                      <span class="rounded-full bg-[#DCE6D4] px-2 py-1 text-[10px] text-[#456644]">
+                        Available
+                      </span>
+                    {% else %}
+                      <span class="rounded-full bg-[#F5DADA] px-2 py-1 text-[10px] text-[#9B4444]">
+                        Unavailable
+                      </span>
+                    {% endif %}
+                  </td>
+                </tr>
+
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+
+          <!-- No Results Message -->
+          <p
+            id="emptyMessage"
+            class="hidden p-8 text-center text-sm text-[#827965]"
+          >
+            No books match your search.
+          </p>
+
+          <!-- Table Footer -->
+          <div class="flex items-center justify-between border-t border-[#E5DCCE] px-5 py-4 text-xs text-[#827965]">
+            <p id="bookCount">Showing {{ books|length }} books</p>
+            <p>NovellaHub Library</p>
+          </div>
+
+        </section>
+      </main>
+    </div>
+
+    <!-- Shared JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

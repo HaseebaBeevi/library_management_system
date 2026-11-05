@@ -1,0 +1,218 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Management System</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="min-h-screen bg-[#F5EFE5] text-[#34351F]">
+    <div class="flex min-h-screen">
+      <div class="w-64 min-h-screen bg-[#4D512F] p-6">
+        <h2
+          class="text-[#D4B56A] text-2xl font-bold tracking-wide flex items-center gap-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v16" />
+            <path
+              d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"
+            />
+          </svg>
+          NovellaHub
+        </h2>
+
+        <p class="mt-2 text-sm text-[#D6C7B5]">Library Management System</p>
+
+        <!-- Navigation Menu -->
+        <nav class="mt-10 space-y-2">
+          <a
+            href="/"
+            class="flex items-center gap-3 bg-[#D4B56A] text-[#34351F] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>🏠</span>
+            <span>Dashboard</span>
+          </a>
+
+          <a
+            href="/books"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>📚</span>
+            <span>View Books</span>
+          </a>
+
+          <a
+            href="/add-book"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>➕</span>
+            <span>Add Book</span>
+          </a>
+
+          <a
+            href="/search"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>🔍</span>
+            <span>Search Book</span>
+          </a>
+
+          <a
+            href="/issue-book"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>📤</span>
+            <span>Issue Book</span>
+          </a>
+
+          <a
+            href="/return-book"
+            class="flex items-center gap-3 text-[#D6C7B5] hover:bg-[#626744] rounded-lg px-4 py-3 text-sm"
+          >
+            <span>📥</span>
+            <span>Return Book</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="flex-1 p-8">
+        <h1 class="text-2xl font-bold">WELCOME TO NovellaHub!</h1>
+        <p>READ · LEARN · GROW</p>
+
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-3 gap-4 mt-6">
+          <div class="bg-white rounded-xl border border-[#E5DCCE] p-5">
+            <div class="flex items-center gap-3">
+              <div class="bg-[#F3E8D2] p-3 rounded-lg">
+                <span class="text-2xl">📚</span>
+              </div>
+              <div>
+                <p class="text-sm text-[#8B8175]">Total Books</p>
+                <h2 class="text-2xl font-bold mt-1">{{ total_books }}</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-[#E5DCCE] p-5">
+            <div class="flex items-center gap-3">
+              <div class="bg-[#E4EBDD] p-3 rounded-lg">
+                <span class="text-2xl">✅</span>
+              </div>
+              <div>
+                <p class="text-sm text-[#8B8175]">Available Books</p>
+                <h2 class="text-2xl font-bold mt-1">{{ available_books }}</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl border border-[#E5DCCE] p-5">
+            <div class="flex items-center gap-3">
+              <div class="bg-[#F0DFD8] p-3 rounded-lg">
+                <span class="text-2xl">📖</span>
+              </div>
+              <div>
+                <p class="text-sm text-[#8B8175]">Borrowed Books</p>
+                <h2 class="text-2xl font-bold mt-1">{{ borrowed_books }}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Books Section -->
+        <div class="mt-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-bold text-[#34351F]">Recent Books</h2>
+
+            <form
+              action="/search"
+              method="GET"
+              class="flex items-center gap-2 bg-white border border-[#E5DCCE] rounded-lg px-3 py-2.5 w-64"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#827965"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+
+              <input
+                type="text"
+                name="q"
+                placeholder="Search by title or ID..."
+                class="w-full outline-none text-xs text-[#34351F] bg-transparent"
+              />
+            </form>
+          </div>
+
+          <!-- Books Table -->
+          <div
+            class="bg-white rounded-lg border border-[#E5DCCE] overflow-hidden"
+          >
+            <table class="w-full text-left text-xs">
+              <thead class="bg-[#F5EFE5] text-[#827965]">
+                <tr>
+                  <th class="p-3">ID</th>
+                  <th class="p-3">Title</th>
+                  <th class="p-3">Author</th>
+                  <th class="p-3">Total Quantity</th>
+                  <th class="p-3">Available</th>
+                  <th class="p-3">Status</th>
+                </tr>
+              </thead>
+
+              <tbody class="text-[#34351F]">
+                {% for book in recent_books %}
+                <tr class="border-t border-[#F0E9DF]">
+                  <td class="p-3">{{ book.bookId }}</td>
+                  <td class="p-3">{{ book.title }}</td>
+                  <td class="p-3">{{ book.author }}</td>
+                  <td class="p-3">{{ book.total_quantity }}</td>
+                  <td class="p-3">{{ book.available_quantity }}</td>
+                  <td class="p-3">
+                    {% if book.available_quantity > 0 %}
+                    <span
+                      class="bg-[#DCE6D4] text-[#456644] px-2 py-1 rounded-full text-[10px]"
+                    >
+                      Available
+                    </span>
+                    {% else %}
+                    <span
+                      class="bg-[#F0DFD8] text-[#8B4B3D] px-2 py-1 rounded-full text-[10px]"
+                    >
+                      Out of Stock
+                    </span>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>

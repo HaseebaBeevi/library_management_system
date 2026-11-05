@@ -1,0 +1,75 @@
+{
+    "books": [
+        {
+            "bookId": 101,
+            "title": "Harry Potter and the Philosopher\u2019s Stone",
+            "author": "J.K. Rowling",
+            "total_quantity": 5,
+            "available_quantity": 1,
+            "price": 499
+        },
+        {
+            "bookId": 102,
+            "title": "Harry Potter and the Chamber of Secrets",
+            "author": "J.K. Rowling",
+            "total_quantity": 5,
+            "available_quantity": 5,
+            "price": 499
+        },
+         {
+            "bookId": 103,
+            "title": "Harry Potter and the Prisoner of Azkaban",
+            "author": "J.K. Rowling",
+            "total_quantity": 5,
+            "available_quantity": 5,
+            "price": 499
+         },
+        {
+            "bookId": 105,
+            "title": "hamlet",
+            "author": "William Shakespeare",
+            "total_quantity": 4,
+            "available_quantity": 4,
+            "price": 400.0
+        },
+        {
+            "bookId": 110,
+            "title": "Pride and Prejudice",
+            "author": "Jane Austen",
+            "total_quantity": 3,
+            "available_quantity": 3,
+            "price": 499.0
+        },
+        {
+            "bookId": 111,
+            "title": "War and Peace",
+            "author": "Leo Tolstoy",
+            "total_quantity": 1,
+            "available_quantity": 1,
+            "price": 399.0
+        },
+        {
+            "bookId": 112,
+            "title": "The God of Small Things:",
+            "author": "Arundhati Roy",
+            "total_quantity": 3,
+            "available_quantity": 3,
+            "price": 299.0
+        }
+    ],
+    "borrowed": {
+        "1": {
+            "student_name": "haseeba",
+            "student_id": "1",
+            "borrowing_bookid": 101,
+            "quantity": 3
+        },
+        "2": {
+            "student_name": "haseeba",
+            "student_id": "1",
+            "borrowing_bookid": 101,
+            "quantity": 1
+        }
+    },
+    "borrowing_id": 3
+}
